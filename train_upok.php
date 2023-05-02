@@ -7,6 +7,7 @@ $action="";
 $degree="";
 $parts="";
 $times="";
+$coin_add="";
 $return["time"]="";
 $return["action"]=false;
 $coin=0;
@@ -17,7 +18,7 @@ $action = trim($_POST['action']);
 $degree = trim($_POST['degree']);
 $parts = trim($_POST['parts']);
 $times = trim($_POST['times']);
-$coin = trim($_POST['coin']);
+$coin_add = trim($_POST['coin_add']);
 }
 
 
@@ -33,16 +34,18 @@ else{
     values('".$times."','".$time."','".$degree."','".$parts."','".$action."','".$account."')");
 }
 
-/*$sql3 = ("select coin FROM `co` where account = '$account'");
-$result = mysqli_query($conn, $sql3);
-if ($result->num_rows > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
+$sql3 = $conn->query("select coin FROM `co` where account = 'airehab_01'");
+echo "ok";
+if ($sql3->num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($sql3)) {
             // 每跑一次迴圈就抓一筆值，最後放進data陣列中
             $coin = $row;
+            echo "ook";
         }
-        $coin=$coin+10;
-    $conn->query("update co set coin= $coin where account ='$account'");
-    }*/
+        (int)$coin=(int)$coin+(int)$coin_add;
+    $conn->query("update co set coin= $coin where account ='airehab_01'");
+    echo "oook";
+    }
   
   
 
