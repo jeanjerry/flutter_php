@@ -2,11 +2,13 @@
 
 include 'conn.php';
 $pid="";
+$parts="";
 $return["lock"]="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pid = trim($_POST['pid']);
+    $parts = trim($_POST['parts']);
     }
-$sql=("SELECT `state` FROM `lock` where pid = '$pid'");
+$sql=("SELECT `state` FROM `lock` where pid = '$pid' AND parts ='$parts'");
 $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
