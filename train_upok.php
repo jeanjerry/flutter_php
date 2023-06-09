@@ -20,7 +20,7 @@ $coin_add = trim($_POST['coin_add']);
 }
 
 
-$sql2 = $conn->query("select * FROM `action` where account = '$account'AND action = '$action'");
+$sql2 = $conn->query("select * FROM `action` where account = '$account'AND action = '$action'AND time = '$time'");
 if ($sql2->num_rows > 0){
     $conn->query("update action set times='2' where account ='$account'AND action = '$action'AND time = '$time'");
     $conn->query("update trainup set times='2' where account ='$account'AND action = '$action'AND time = '$time'");
